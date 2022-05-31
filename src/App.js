@@ -1,15 +1,21 @@
-import { Routes, Route, Link } from "react-router-dom";
-import LandingPage from "./components/body/LandingPage";
+import { Routes, Route } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "./components/header/Header";
+import HomePage from "./components/pages/HomePage/HomePage";
 
 const App = () => {
   return (
-    <div className=" w-full h-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ type: "spring", stiffness: 100 }}
+      className=" w-full h-full flex flex-col ">
       <Header />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<HomePage />} />
       </Routes>
-    </div>
+    </motion.div>
   );
 };
 
